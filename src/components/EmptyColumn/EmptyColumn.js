@@ -20,18 +20,18 @@ const EmptyColumn = ({
   emptyTextFontFamily,
   emptyTextFontSize,
   marginTop
-}) =>  (
-  <EmptyWrapper marginTop={marginTop}>
-    <Empty color={emptyIconColor} />
-    <Paragraph
-      color={emptyTextColor}
-      fontFamily={emptyTextFontFamily}
-      fontSize={emptyTextFontSize}
-    >
-      {emptyText}
-    </Paragraph>
-  </EmptyWrapper>
-)
+}) => (
+    <EmptyWrapper marginTop={marginTop}>
+      <Empty color={emptyIconColor} />
+      <Paragraph
+        color={emptyTextColor}
+        fontFamily={emptyTextFontFamily}
+        fontSize={emptyTextFontSize}
+      >
+        {emptyText}
+      </Paragraph>
+    </EmptyWrapper>
+  )
 
 EmptyColumn.defaultProps = {
   emptyIconColor: colors.blurple,
