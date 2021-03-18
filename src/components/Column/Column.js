@@ -1,7 +1,7 @@
 // Copyright (c) 2015-present Mattermost, Inc. All Rights Reserved.
 // See LICENSE.txt for license information.
 import React from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet, Image, Text } from 'react-native';
 import {
     bool,
     func,
@@ -208,30 +208,24 @@ class Column extends React.Component {
                                 {column.data().name}
                             </Paragraph>
                         </View>
-                        {(isWithCountBadge && colElements > 0) && <SumWrapper>
-                            <ParagraphWrapper
-                                backgroundColor={badgeBackgroundColor}
-                                width={badgeWidth}
-                                height={badgeHeight}
-                                borderRadius={badgeBorderRadius}
+                        {(isWithCountBadge && colElements > 0) && <View style={styles.viewCol}>
+                            <Image
+                                style={styles.iconCol}
+                                resizeMode='contain'
+                                source={require('../../assets/icons/ic_totalCard.png')}
+                            />
+                            <Text style={styles.txtColElement}
                             >
-                                <Paragraph
-                                    fontSize={badgeTextFontSize}
-                                    fontFamily={badgeTextFontFamily}
-                                    color={badgeTextColor}
-                                    lineHeight={ios ? null : badgeTextFontSize * 1.6}
-                                >
-                                    {colElements.toString()}
-                                </Paragraph>
-                            </ParagraphWrapper>
-                        </SumWrapper>
+                                {colElements.toString()}
+                            </Text>
+                        </View>
                         }
                     </View>
                     {
-                        ( colElements === 0 && viewRightHeaderEmptyColumn)
-                        ?
-                        viewRightHeaderEmptyColumn(column?.attributes?.data)
-                        :null
+                        (colElements === 0 && viewRightHeaderEmptyColumn)
+                            ?
+                            viewRightHeaderEmptyColumn(column?.attributes?.data)
+                            : null
                     }
                     {(colElements > 0 && viewRightHeaderColumn) ? viewRightHeaderColumn(column?.attributes?.data) : null}
                 </View>
@@ -320,6 +314,15 @@ Column.propTypes = {
 export default Column;
 
 const styles = StyleSheet.create({
+    viewCol: {
+        flexDirection: 'row',
+        marginLeft: 8, alignItems: 'center', justifyContent: 'center',
+    },
+    iconCol: {
+        width: 24,
+        height: 24,
+    },
+    txtColElement: { fontSize: 14, fontWeight: '500', color: '#1B2C3D' },
     v3: { flex: 1 },
     v2: {
         flexDirection: 'row',

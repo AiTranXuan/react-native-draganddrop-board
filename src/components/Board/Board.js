@@ -377,6 +377,7 @@ Board.propTypes = {
     open: func.isRequired,
     requestAnimationFrame: func.isRequired,
     boardRepository: object.isRequired,
+    updateDataBoard: func,
     setTimeout: func.isRequired,
 };
 
